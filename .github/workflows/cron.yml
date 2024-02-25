@@ -2,7 +2,7 @@ name: cron-job
 on:
   schedule:
     # runs tests every day at 12pm
-    - cron: '0 12 * * *'
+    - cron: '30 18 * * *'
 jobs:
   nightly:
     runs-on: ubuntu-22.04
