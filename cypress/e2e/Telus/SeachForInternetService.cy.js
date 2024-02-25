@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 let searchValue;
-describe("Telus search bar", () => {
-  it('search for "Internet" and verify search results', () => {
+describe("Telus search bar assignment", () => {
+  it('use the search bar to input "Internet" and verify search results', () => {
     cy.on("uncaught:exception", (err, runnable) => {
       return false;
     });
@@ -23,16 +23,20 @@ describe("Telus search bar", () => {
       .contains("Articles")
       .parent() // Move up to the parent container or element
       .next() // Select the next sibling, which is the container for the article links
+      .find("ul.styles__ListContainer-sc-1aohvhp-6.jaVibZ") //find the list of articles inside the container
       .within(() => {
-        // Apply actions only within the container for the article links
-        // Get all links within the container and assert that there are at least 6 of them
+        // Apply actions only inside the container for the article links
+        // Get all links inside the container and assert that there are at least 6 of them
         cy.get("a")
           .should("have.length.at.least", 6)
           .each(($link) => {
-            // Check if each link has an href attribute and that attribute is no empty (clickable)
-            cy.wrap($link).should("have.attr", "href").and("not.be.empty");
+            // Check if each link has an href attribute ,that attribute is no empty and includes http (clickable)
+            cy.wrap($link)
+              .should("have.attr", "href")
+              .and("not.be.empty")
+              .and("include", "http");
           });
-        cy.contains("a", "Internet speed test").click();
+        cy.contains("a", "Internet speed test").click(); //click the desired link
       });
   });
 });
