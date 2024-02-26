@@ -1,8 +1,8 @@
 name: cron-job
 on:
   schedule:
-    # runs tests every day at 12pm
-    - cron: '30 18 * * *'
+    # runs tests every day at 9:00 pm CST
+    - cron: '0 3 * * *'
 jobs:
   nightly:
     runs-on: ubuntu-22.04
