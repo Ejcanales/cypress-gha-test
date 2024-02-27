@@ -9,7 +9,7 @@ describe("Telus search bar assignment", () => {
     cy.viewport("macbook-16");
     cy.visit("/");
     cy.get("#search-button").click().wait(3000);
-    cy.get('[data-test="search-input"]').type("Internet"); //use the search bar to input the keyword "Internet."
+    cy.get('[placeholder="Search TELUS.com"]').type("Internet"); //use the search bar to input the keyword "Internet."
     cy.get("li").contains("Internet speed").click().wait(3000); //select the 3rd option from the drop-down list by employing partial text matching
     cy.get('input[placeholder="Search"]')
       .invoke("val")
